@@ -13,7 +13,7 @@ model_files = {
 # Load vectorizer once
 tfidf = joblib.load('tfidf_vectorizer.pkl')
 
-st.title("Movie Sentiment Demo")
+st.title("Movie Sentiment Analysis")
 
 # Dropdown for model selection
 model_name = st.selectbox(
