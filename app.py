@@ -7,7 +7,7 @@ model_files = {
     "Passive Aggressive": "passive_aggressive.pkl",
     "Random Forest": "random_forest.pkl",
     "Linear SVC": "svc_linear.pkl",
-    "XGBoost": "xgboost.pkl"
+    "XGBoost": "XGBoost.pkl"
 }
 
 # Load vectorizer once
