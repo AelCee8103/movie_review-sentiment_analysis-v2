@@ -1,12 +1,13 @@
 import streamlit as st
 import joblib
+from sklearn.linear_model import LogisticRegression
 
 # Dictionary of model names and their file paths
 model_files = {
-    "Logistic Regression": "logistic_regression.pkl",
+    "Logistic Regression": "logistic_regression_best.pkl",
     "Passive Aggressive": "passive_aggressive.pkl",
     "Random Forest": "random_forest.pkl",
-    "Linear SVC": "svc_linear.pkl",
+    "Linear SVC": "linear_svc_model.pkl",
     "XGBoost": "XGBoost.pkl"
 }
 
@@ -22,8 +23,16 @@ model_name = st.selectbox(
     index=0  # Default to Logistic Regression
 )
 
-# Load selected model
-model = joblib.load(model_files[model_name])
+if model_name == "Logistic Regression":
+    # Load best params and model
+    best_params = joblib.load('logistic_regression_best_params.pkl')
+    model = joblib.load(model_files[model_name])
+    # Optionally, re-instantiate LogisticRegression with best_params if needed:
+    # model = LogisticRegression(**best_params)
+    # model.coef_ = loaded_model.coef_
+    # model.intercept_ = loaded_model.intercept_
+else:
+    model = joblib.load(model_files[model_name])
 
 review = st.text_area("Enter a review:")
 if st.button("Predict"):
